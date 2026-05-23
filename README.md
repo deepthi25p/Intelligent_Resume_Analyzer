@@ -160,7 +160,7 @@ Resume Quality (10 pts):
 
 ## 📹 Demo Video
 
-[▶ Watch Demo on YouTube](https://youtu.be/TEPOgcg1iho) ← *Add your YouTube link here*
+[▶ Watch Demo on YouTube](https://youtu.be/TEPOgcg1iho) 
 
 ---
 
