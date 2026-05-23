@@ -1,0 +1,308 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary)}
+.app{padding:1.5rem 0}
+.header{margin-bottom:1.5rem}
+.header h1{font-size:22px;font-weight:500;margin-bottom:4px}
+.header p{font-size:14px;color:var(--color-text-secondary)}
+.tabs{display:flex;gap:4px;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.5rem}
+.tab{padding:8px 16px;font-size:14px;cursor:pointer;border:none;background:none;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-0.5px}
+.tab.active{color:var(--color-text-primary);border-bottom-color:var(--color-text-primary);font-weight:500}
+.section-label{font-size:12px;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px;font-weight:500}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1.25rem;margin-bottom:1rem}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1rem}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:1rem}
+input,select,textarea{width:100%;font-family:var(--font-sans);font-size:14px}
+label{font-size:13px;color:var(--color-text-secondary);display:block;margin-bottom:4px}
+.field{margin-bottom:12px}
+textarea{min-height:140px;resize:vertical;padding:8px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary)}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:8px 18px;font-size:14px;cursor:pointer;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:var(--color-background-primary);color:var(--color-text-primary);font-family:var(--font-sans)}
+.btn:hover{background:var(--color-background-secondary)}
+.btn-primary{background:var(--color-text-primary);color:var(--color-background-primary);border-color:transparent;font-weight:500}
+.btn-primary:hover{opacity:.88}
+.btn-sm{padding:5px 12px;font-size:13px}
+.metric{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:1rem;text-align:center}
+.metric-val{font-size:28px;font-weight:500;line-height:1}
+.metric-label{font-size:12px;color:var(--color-text-secondary);margin-top:4px}
+.badge{display:inline-block;padding:3px 10px;border-radius:var(--border-radius-md);font-size:12px;font-weight:500}
+.badge-green{background:#EAF3DE;color:#27500A}
+.badge-amber{background:#FAEEDA;color:#633806}
+.badge-red{background:#FCEBEB;color:#501313}
+.badge-blue{background:#E6F1FB;color:#0C447C}
+.score-bar-wrap{background:var(--color-background-secondary);border-radius:100px;height:8px;overflow:hidden;margin-top:6px}
+.score-bar{height:100%;border-radius:100px;transition:width .5s ease}
+.candidate-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:0.5px solid var(--color-border-tertiary)}
+.candidate-row:last-child{border-bottom:none}
+.avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:500;flex-shrink:0}
+.rank-num{font-size:13px;color:var(--color-text-secondary);width:20px;text-align:center;flex-shrink:0}
+.result-panel{display:none}
+.result-panel.show{display:block}
+.breakdown-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.breakdown-label{font-size:13px;color:var(--color-text-secondary);width:90px;flex-shrink:0}
+.breakdown-score{font-size:13px;font-weight:500;width:52px;text-align:right;flex-shrink:0}
+.skill-chip{display:inline-block;padding:3px 9px;border-radius:100px;font-size:12px;margin:2px;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)}
+.skill-chip.matched{background:#EAF3DE;color:#27500A;border-color:#C0DD97}
+.skill-chip.missing{background:#FCEBEB;color:#501313;border-color:#F7C1C1}
+.empty{text-align:center;padding:2rem;color:var(--color-text-secondary);font-size:14px}
+.rec{padding:10px 14px;border-radius:var(--border-radius-md);font-size:13px;margin-bottom:1rem;border-left:3px solid}
+.rec-green{background:#EAF3DE;color:#27500A;border-color:#639922}
+.rec-amber{background:#FAEEDA;color:#633806;border-color:#BA7517}
+.rec-orange{background:#FAECE7;color:#4A1B0C;border-color:#D85A30}
+.rec-red{background:#FCEBEB;color:#501313;border-color:#E24B4A}
+.tabs-panel{display:none}.tabs-panel.active{display:block}
+</style>
+
+<div class="app">
+  <div class="header">
+    <h1><i class="ti ti-file-search" aria-hidden="true" style="font-size:20px;vertical-align:-2px;margin-right:6px"></i>Intelligent resume analyzer</h1>
+    <p>Paste resumes, set job requirements, get match scores and hiring recommendations instantly.</p>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('analyze')">Analyze resumes</button>
+    <button class="tab" onclick="switchTab('leaderboard')">Leaderboard</button>
+  </div>
+
+  <div id="tab-analyze" class="tabs-panel active">
+    <div class="grid2">
+      <div class="card">
+        <div class="section-label">Job requirements</div>
+        <div class="field"><label>Job title</label><input type="text" id="jobTitle" value="Data Scientist" /></div>
+        <div class="field"><label>Department</label><input type="text" id="jobDept" value="Analytics & AI" /></div>
+        <div class="field"><label>Required skills (comma-separated)</label><input type="text" id="reqSkills" value="Python, Machine Learning, SQL, Pandas, Scikit-learn" /></div>
+        <div class="field"><label>Preferred skills</label><input type="text" id="prefSkills" value="TensorFlow, PyTorch, AWS, Docker, NLP" /></div>
+        <div class="grid2" style="margin-bottom:0">
+          <div class="field"><label>Min experience (yrs)</label><input type="number" id="minExp" value="3" min="0" /></div>
+          <div class="field"><label>Max experience (yrs)</label><input type="number" id="maxExp" value="8" min="0" /></div>
+        </div>
+        <div class="field"><label>Required education</label>
+          <select id="reqEdu">
+            <option>Bachelors</option><option>Masters</option><option>PhD</option><option>Diploma</option><option>High School</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="section-label">Candidates</div>
+        <div id="candidateList"></div>
+        <button class="btn btn-sm" onclick="addCandidate()" style="margin-bottom:10px"><i class="ti ti-plus" aria-hidden="true"></i> Add candidate</button>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="runAnalysis()" style="width:100%;justify-content:center;padding:10px">
+      <i class="ti ti-player-play" aria-hidden="true"></i> Run analysis
+    </button>
+
+    <div id="resultsSection" style="margin-top:1.5rem"></div>
+  </div>
+
+  <div id="tab-leaderboard" class="tabs-panel">
+    <div class="card">
+      <div class="section-label">Candidate ranking</div>
+      <div id="leaderboardContent"><div class="empty"><i class="ti ti-trophy" style="font-size:32px;display:block;margin:0 auto 8px"></i>Run an analysis first to see rankings here.</div></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const EDU_RANK={PhD:5,Masters:4,Bachelors:3,Diploma:2,'High School':1,'Not specified':0};
+let candidates=[
+  {name:'Arjun Sharma',email:'arjun.sharma@email.com',text:`Arjun Sharma\narjun.sharma@email.com | +91-98001-11111\n\nEDUCATION\nB.Tech Computer Science IIT Delhi 2019\n\nEXPERIENCE\nData Scientist TechCorp Inc 2021 to Present\nBuilt ML pipelines using Python Scikit-learn Pandas NumPy\nDeployed NLP models using TensorFlow PyTorch on AWS\nSQL queries PostgreSQL database management\nUsed Docker for containerized model deployment\nJunior Analyst DataLabs Jun 2019 to Dec 2020\nPython scripting SQL reporting Tableau dashboards\n\nSKILLS\nPython, Machine Learning, SQL, Pandas, Scikit-learn, NumPy, TensorFlow, PyTorch, NLP, AWS, Docker, Git, Tableau`},
+  {name:'Priya Nair',email:'priya.nair@gmail.com',text:`Priya Nair\npriya.nair@gmail.com | +91-98002-22222\n\nEDUCATION\nMasters Statistics Delhi University 2020\n\nEXPERIENCE\nBusiness Analyst FinServe Ltd 2020 to Present\nSQL reporting and Excel dashboards\nBasic Python scripting for data cleaning\n\nSKILLS\nPython, SQL, Excel, Tableau, R, Pandas, Power BI`},
+  {name:'Rohit Mehta',email:'rohit.mehta@yahoo.com',text:`Rohit Mehta\nrohit.mehta@yahoo.com\n\nEDUCATION\nHigh School Diploma 2015\n\nEXPERIENCE\nData Entry Clerk XYZ Corp 2016 to 2018\n\nSKILLS\nMicrosoft Word, Excel, Typing, Data Entry`}
+];
+let results=[];
+
+function switchTab(t){
+  document.querySelectorAll('.tab').forEach(el=>el.classList.remove('active'));
+  document.querySelectorAll('.tabs-panel').forEach(el=>el.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+}
+
+function renderCandidates(){
+  const el=document.getElementById('candidateList');
+  el.innerHTML=candidates.map((c,i)=>`
+    <div style="display:flex;align-items:flex-start;gap:8px;margin-bottom:10px">
+      <div style="flex:1">
+        <div style="display:flex;gap:6px;margin-bottom:4px">
+          <input type="text" value="${c.name}" oninput="candidates[${i}].name=this.value" placeholder="Candidate name" style="flex:1" />
+          <button class="btn btn-sm" onclick="removeCand(${i})" aria-label="Remove"><i class="ti ti-trash" aria-hidden="true"></i></button>
+        </div>
+        <textarea style="min-height:80px;font-size:12px" oninput="candidates[${i}].text=this.value" placeholder="Paste resume text here...">${c.text}</textarea>
+      </div>
+    </div>`).join('');
+}
+
+function addCandidate(){
+  candidates.push({name:'New candidate',email:'',text:''});
+  renderCandidates();
+}
+
+function removeCand(i){
+  candidates.splice(i,1);
+  renderCandidates();
+}
+
+function parseResume(text){
+  const lines=text.split('\n').map(l=>l.trim()).filter(Boolean);
+  const name=lines[0]||'Unknown';
+  const emailM=text.match(/[\w.\-+]+@[\w.\-]+\.\w+/);
+  const email=emailM?emailM[0]:'Not found';
+  const phoneM=text.match(/(\+?\d[\d\s\-().]{7,}\d)/);
+  const phone=phoneM?phoneM[0].trim():'Not found';
+  const known=['Python','Java','JavaScript','TypeScript','C++','SQL','MySQL','PostgreSQL','MongoDB',
+    'Django','Flask','FastAPI','React','Angular','Vue','Node.js','Machine Learning','Deep Learning',
+    'NLP','TensorFlow','PyTorch','Keras','Scikit-learn','Pandas','NumPy','Matplotlib','Seaborn',
+    'AWS','Azure','GCP','Docker','Kubernetes','Git','Linux','REST API','GraphQL','HTML','CSS',
+    'Tableau','Power BI','Excel','Agile','Scrum','R','Spark','Hadoop','MongoDB','Redis'];
+  const skills=known.filter(k=>new RegExp('\\b'+k.replace('+','\\+').replace('.','\\.')+'\\b','i').test(text));
+  const dateRanges=[...text.matchAll(/(\d{4})\s*(?:to|-|–)\s*(present|\d{4})/gi)];
+  let expYears=0;
+  const now=new Date().getFullYear();
+  dateRanges.forEach(m=>{
+    const end=m[2].toLowerCase()==='present'?now:parseInt(m[2]);
+    const diff=end-parseInt(m[1]);
+    if(diff>0&&diff<50)expYears+=diff;
+  });
+  const eduMap=[['phd|doctor','PhD'],['m\\.?tech|m\\.?sc|masters?|m\\.?e\\b','Masters'],['b\\.?tech|b\\.?sc|bachelors?|b\\.?e\\b','Bachelors'],['diploma','Diploma'],['high school|hsc|ssc','High School']];
+  let edu='Not specified';
+  for(const [p,l] of eduMap){if(new RegExp(p,'i').test(text)){edu=l;break;}}
+  return{name,email,phone,skills,expYears:Math.round(expYears*10)/10,education:edu,wordCount:text.split(/\s+/).length};
+}
+
+function calcScore(cand,job){
+  const req=new Set(job.req.map(s=>s.toLowerCase().trim()));
+  const pref=new Set(job.pref.map(s=>s.toLowerCase().trim()));
+  const cs=new Set(cand.skills.map(s=>s.toLowerCase()));
+  const reqM=[...req].filter(s=>cs.has(s));
+  const prefM=[...pref].filter(s=>cs.has(s));
+  const missingReq=[...req].filter(s=>!cs.has(s));
+  const skillScore=Math.round(((reqM.length/Math.max(req.size,1))*0.8+(prefM.length/Math.max(pref.size,1))*0.2)*50*10)/10;
+  let expScore;
+  if(cand.expYears>=job.minExp){
+    expScore=Math.round(Math.min(cand.expYears/Math.max(job.maxExp,1),1)*30*10)/10;
+  } else {
+    expScore=Math.round((cand.expYears/Math.max(job.minExp,1))*15*10)/10;
+  }
+  const eduOk=(EDU_RANK[cand.education]||0)>=(EDU_RANK[job.edu]||0);
+  const eduScore=eduOk?10:5;
+  let q=0;
+  if(cand.email!=='Not found')q+=3;
+  if(cand.phone!=='Not found')q+=2;
+  if(cand.wordCount>=200)q+=3;
+  if(cand.skills.length>=5)q+=2;
+  const total=Math.min(Math.round((skillScore+expScore+eduScore+q)*10)/10,100);
+  return{total,skillScore,expScore,eduScore,q,reqM,prefM,missingReq,eduOk};
+}
+
+function getRec(score){
+  if(score>=80)return{text:'Strong hire — exceptional match. Schedule technical interview immediately.',cls:'rec-green',badge:'Strong hire',badgeCls:'badge-green'};
+  if(score>=65)return{text:'Recommended — good match. Proceed with initial screening call.',cls:'rec-amber',badge:'Recommended',badgeCls:'badge-blue'};
+  if(score>=45)return{text:'Maybe — partial match. Consider if pipeline is thin.',cls:'rec-orange',badge:'Maybe',badgeCls:'badge-amber'};
+  return{text:'Not recommended — significant skill/experience gaps.',cls:'rec-red',badge:'Not recommended',badgeCls:'badge-red'};
+}
+
+function barColor(score){
+  if(score>=80)return'#639922';
+  if(score>=65)return'#BA7517';
+  if(score>=45)return'#D85A30';
+  return'#E24B4A';
+}
+
+function avatarColors(i){
+  const c=[['#E6F1FB','#0C447C'],['#EAF3DE','#27500A'],['#FAEEDA','#633806'],['#FAECE7','#4A1B0C'],['#EEEDFE','#3C3489']];
+  return c[i%c.length];
+}
+
+function initials(name){return name.split(' ').map(w=>w[0]||'').slice(0,2).join('').toUpperCase();}
+
+function runAnalysis(){
+  const job={
+    title:document.getElementById('jobTitle').value||'Job',
+    dept:document.getElementById('jobDept').value,
+    req:document.getElementById('reqSkills').value.split(',').map(s=>s.trim()).filter(Boolean),
+    pref:document.getElementById('prefSkills').value.split(',').map(s=>s.trim()).filter(Boolean),
+    minExp:parseFloat(document.getElementById('minExp').value)||0,
+    maxExp:parseFloat(document.getElementById('maxExp').value)||10,
+    edu:document.getElementById('reqEdu').value
+  };
+
+  results=candidates.map((c,i)=>{
+    const parsed=parseResume(c.text);
+    parsed.name=c.name||parsed.name;
+    const score=calcScore(parsed,job);
+    return{idx:i,candidate:parsed,score,job};
+  }).sort((a,b)=>b.score.total-a.score.total);
+
+  renderResults(job);
+  renderLeaderboard();
+}
+
+function renderResults(job){
+  const el=document.getElementById('resultsSection');
+  el.innerHTML=`<div class="section-label" style="margin-bottom:12px">Analysis results — ${job.title}</div>`+
+  results.map((r,rank)=>{
+    const rec=getRec(r.score.total);
+    const [bgC,textC]=avatarColors(rank);
+    return`<div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem">
+        <div style="font-size:18px;font-weight:500;color:var(--color-text-secondary);width:24px">#${rank+1}</div>
+        <div style="width:44px;height:44px;border-radius:50%;background:${bgC};color:${textC};display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:500;flex-shrink:0">${initials(r.candidate.name)}</div>
+        <div style="flex:1">
+          <div style="font-size:16px;font-weight:500">${r.candidate.name}</div>
+          <div style="font-size:13px;color:var(--color-text-secondary)">${r.candidate.email} &nbsp;·&nbsp; ${r.candidate.education} &nbsp;·&nbsp; ${r.candidate.expYears} yrs exp</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-size:28px;font-weight:500;line-height:1">${r.score.total}</div>
+          <div style="font-size:11px;color:var(--color-text-secondary)">/100</div>
+        </div>
+      </div>
+      <div class="score-bar-wrap"><div class="score-bar" style="width:${r.score.total}%;background:${barColor(r.score.total)}"></div></div>
+      <div style="margin-top:1rem" class="rec ${rec.cls}"><strong>${rec.badge}</strong> — ${rec.text}</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem">
+        <div>
+          <div class="section-label">Score breakdown</div>
+          ${[['Skills',r.score.skillScore,50],['Experience',r.score.expScore,30],['Education',r.score.eduScore,10],['Resume quality',r.score.q,10]].map(([l,s,m])=>`
+          <div class="breakdown-row">
+            <span class="breakdown-label">${l}</span>
+            <div class="score-bar-wrap" style="flex:1"><div class="score-bar" style="width:${Math.round(s/m*100)}%;background:${barColor(r.score.total)}"></div></div>
+            <span class="breakdown-score">${s} / ${m}</span>
+          </div>`).join('')}
+        </div>
+        <div>
+          <div class="section-label">Skills</div>
+          <div style="margin-bottom:6px">${r.score.reqM.map(s=>`<span class="skill-chip matched"><i class="ti ti-check" style="font-size:11px" aria-hidden="true"></i> ${s}</span>`).join('')||'<span style="font-size:12px;color:var(--color-text-secondary)">No required skills matched</span>'}</div>
+          ${r.score.missingReq.length?`<div style="margin-top:6px">${r.score.missingReq.map(s=>`<span class="skill-chip missing"><i class="ti ti-x" style="font-size:11px" aria-hidden="true"></i> ${s}</span>`).join('')}</div>`:''}
+          ${r.score.prefM.length?`<div style="margin-top:6px">${r.score.prefM.map(s=>`<span class="skill-chip" style="background:#E6F1FB;color:#0C447C;border-color:#B5D4F4">${s}</span>`).join('')}</div>`:''}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+function renderLeaderboard(){
+  const el=document.getElementById('leaderboardContent');
+  if(!results.length){el.innerHTML='<div class="empty">No results yet.</div>';return;}
+  el.innerHTML=results.map((r,i)=>{
+    const rec=getRec(r.score.total);
+    const [bgC,textC]=avatarColors(i);
+    return`<div class="candidate-row">
+      <span class="rank-num">${i+1}</span>
+      <div style="width:36px;height:36px;border-radius:50%;background:${bgC};color:${textC};display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500;flex-shrink:0">${initials(r.candidate.name)}</div>
+      <div style="flex:1">
+        <div style="font-size:14px;font-weight:500">${r.candidate.name}</div>
+        <div style="font-size:12px;color:var(--color-text-secondary)">${r.candidate.expYears} yrs &nbsp;·&nbsp; ${r.candidate.education} &nbsp;·&nbsp; ${r.candidate.skills.length} skills</div>
+        <div class="score-bar-wrap" style="margin-top:6px;max-width:300px"><div class="score-bar" style="width:${r.score.total}%;background:${barColor(r.score.total)}"></div></div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:20px;font-weight:500">${r.score.total}</div>
+        <span class="badge ${rec.badgeCls}" style="font-size:11px">${rec.badge}</span>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+renderCandidates();
+</script>
