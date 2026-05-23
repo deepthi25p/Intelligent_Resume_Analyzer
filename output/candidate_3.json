@@ -1,0 +1,74 @@
+{
+  "timestamp": "2026-05-23T11:27:41.004357",
+  "job": {
+    "title": "Senior Data Scientist",
+    "department": "Analytics & AI",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "SQL",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "preferred_skills": [
+      "TensorFlow",
+      "PyTorch",
+      "AWS",
+      "Docker",
+      "NLP"
+    ],
+    "min_experience_years": 3,
+    "max_experience_years": 8,
+    "required_education": "Bachelors"
+  },
+  "candidate": {
+    "name": "Harry Johnson",
+    "email": "harry.johnson@email.com",
+    "phone": "Not found",
+    "skills": [
+      "Microsoft Office",
+      "Excel",
+      "Data Entry",
+      "Typing"
+    ],
+    "experience_years": 2.0,
+    "education": "Diploma",
+    "raw_length": 28
+  },
+  "match": {
+    "total": 18.0,
+    "breakdown": {
+      "skills": {
+        "score": 0.0,
+        "max": 50,
+        "required_matched": [],
+        "preferred_matched": [],
+        "missing_required": [
+          "machine learning",
+          "pandas",
+          "python",
+          "scikit-learn",
+          "sql"
+        ]
+      },
+      "experience": {
+        "score": 10.0,
+        "max": 30,
+        "candidate_years": 2.0,
+        "required_range": "3–8 years"
+      },
+      "education": {
+        "score": 5,
+        "max": 10,
+        "candidate": "Diploma",
+        "required": "Bachelors",
+        "meets": false
+      },
+      "quality": {
+        "score": 3,
+        "max": 10
+      }
+    }
+  },
+  "report": "════════════════════════════════════════════════════════════\n         INTELLIGENT RESUME ANALYZER — REPORT\n════════════════════════════════════════════════════════════\n  Generated   : 23 May 2026, 11:27 AM\n  Job Title   : Senior Data Scientist\n  Department  : Analytics & AI\n════════════════════════════════════════════════════════════\n\n  CANDIDATE PROFILE\n  ────────────────────────────────────────\n  Name        : Harry Johnson\n  Email       : harry.johnson@email.com\n  Phone       : Not found\n  Education   : Diploma\n  Experience  : 2.0 years\n  Skills (4): Microsoft Office, Excel, Data Entry, Typing\n\n  MATCH SCORE BREAKDOWN\n  ────────────────────────────────────────\n  Skills      :   0.0 / 50\n  Experience  :  10.0 / 30\n  Education   :   5.0 / 10\n  Quality     :   3.0 / 10\n  ────────────────────\n  TOTAL SCORE :  18.0 / 100\n\n  RECOMMENDATION\n  ────────────────────────────────────────\n  🔴 NOT RECOMMENDED — Significant skill/experience gaps.\n\n  SKILL GAPS (Required but missing)\n  ────────────────────────────────────────\n  ✗ machine learning\n  ✗ pandas\n  ✗ python\n  ✗ scikit-learn\n  ✗ sql\n\n════════════════════════════════════════════════════════════"
+}

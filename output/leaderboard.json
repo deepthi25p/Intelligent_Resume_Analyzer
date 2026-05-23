@@ -1,0 +1,29 @@
+[
+  {
+    "rank": 1,
+    "label": "Shiva \u2014 Strong Match",
+    "score": 85.2,
+    "recommend": [
+      "machine learning",
+      "pandas",
+      "python",
+      "sql"
+    ]
+  },
+  {
+    "rank": 2,
+    "label": "Rudra \u2014 Moderate Match",
+    "score": 63.5,
+    "recommend": [
+      "pandas",
+      "python",
+      "sql"
+    ]
+  },
+  {
+    "rank": 3,
+    "label": "Harry\u2014 Weak Match",
+    "score": 18.0,
+    "recommend": []
+  }
+]

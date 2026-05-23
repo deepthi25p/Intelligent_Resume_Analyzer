@@ -1,0 +1,9 @@
+{
+  "title": "Senior Data Scientist",
+  "department": "Analytics & AI",
+  "required_skills": ["Python", "Machine Learning", "SQL", "Pandas", "Scikit-learn"],
+  "preferred_skills": ["TensorFlow", "PyTorch", "AWS", "Docker", "NLP"],
+  "min_experience_years": 3,
+  "max_experience_years": 8,
+  "required_education": "Bachelors"
+}

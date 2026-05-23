@@ -1,0 +1,90 @@
+{
+  "timestamp": "2026-05-23T11:27:41.001030",
+  "job": {
+    "title": "Senior Data Scientist",
+    "department": "Analytics & AI",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "SQL",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "preferred_skills": [
+      "TensorFlow",
+      "PyTorch",
+      "AWS",
+      "Docker",
+      "NLP"
+    ],
+    "min_experience_years": 3,
+    "max_experience_years": 8,
+    "required_education": "Bachelors"
+  },
+  "candidate": {
+    "name": "Shiva Patel",
+    "email": "shiva.patel@email.com",
+    "phone": "+1-555-0101",
+    "skills": [
+      "Python",
+      "Machine Learning",
+      "SQL",
+      "Pandas",
+      "Scikit",
+      "learn",
+      "TensorFlow",
+      "PyTorch",
+      "NLP",
+      "AWS",
+      "Docker",
+      "Git",
+      "REST API"
+    ],
+    "experience_years": 7.0,
+    "education": "Bachelors",
+    "raw_length": 78
+  },
+  "match": {
+    "total": 85.2,
+    "breakdown": {
+      "skills": {
+        "score": 42.0,
+        "max": 50,
+        "required_matched": [
+          "machine learning",
+          "pandas",
+          "python",
+          "sql"
+        ],
+        "preferred_matched": [
+          "aws",
+          "docker",
+          "nlp",
+          "pytorch",
+          "tensorflow"
+        ],
+        "missing_required": [
+          "scikit-learn"
+        ]
+      },
+      "experience": {
+        "score": 26.2,
+        "max": 30,
+        "candidate_years": 7.0,
+        "required_range": "3–8 years"
+      },
+      "education": {
+        "score": 10,
+        "max": 10,
+        "candidate": "Bachelors",
+        "required": "Bachelors",
+        "meets": true
+      },
+      "quality": {
+        "score": 7,
+        "max": 10
+      }
+    }
+  },
+  "report": "════════════════════════════════════════════════════════════\n         INTELLIGENT RESUME ANALYZER — REPORT\n════════════════════════════════════════════════════════════\n  Generated   : 23 May 2026, 11:27 AM\n  Job Title   : Senior Data Scientist\n  Department  : Analytics & AI\n════════════════════════════════════════════════════════════\n\n  CANDIDATE PROFILE\n  ────────────────────────────────────────\n  Name        : Shiva Patel\n  Email       : shiva.patel@email.com\n  Phone       : +1-555-0101\n  Education   : Bachelors\n  Experience  : 7.0 years\n  Skills (13): Python, Machine Learning, SQL, Pandas, Scikit, learn, TensorFlow, PyTorch, NLP, AWS\n\n  MATCH SCORE BREAKDOWN\n  ────────────────────────────────────────\n  Skills      :  42.0 / 50\n  Experience  :  26.2 / 30\n  Education   :  10.0 / 10\n  Quality     :   7.0 / 10\n  ────────────────────\n  TOTAL SCORE :  85.2 / 100\n\n  RECOMMENDATION\n  ────────────────────────────────────────\n  🟢 STRONG HIRE — Exceptional match. Schedule technical interview immediately.\n\n  SKILL GAPS (Required but missing)\n  ────────────────────────────────────────\n  ✗ scikit-learn\n\n  MATCHED SKILLS\n  ────────────────────────────────────────\n  ✓ machine learning (required)\n  ✓ pandas (required)\n  ✓ python (required)\n  ✓ sql (required)\n  ✓ aws (preferred)\n  ✓ docker (preferred)\n  ✓ nlp (preferred)\n  ✓ pytorch (preferred)\n  ✓ tensorflow (preferred)\n\n════════════════════════════════════════════════════════════"
+}

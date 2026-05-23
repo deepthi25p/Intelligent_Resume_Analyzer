@@ -1,0 +1,20 @@
+Alice Chen
+alice.chen@email.com | +1-555-0101
+
+EDUCATION
+B.Tech in Computer Science — Massachusetts Institute of Technology, 2018
+
+EXPERIENCE
+Senior Data Scientist — TechCorp Inc.                    Jan 2019 – Present
+  • Designed and deployed ML pipelines processing 10M+ records daily
+  • Implemented NLP models for sentiment analysis using TensorFlow & PyTorch
+  • Managed AWS infrastructure (S3, EC2, Lambda) for model serving
+  • Mentored junior data scientists; led sprint planning in Agile environment
+
+Junior Data Analyst — DataLabs                           Jun 2018 – Dec 2018
+  • SQL reporting, Excel dashboards, and Python scripting for ETL jobs
+
+SKILLS
+Python, Machine Learning, Deep Learning, NLP, SQL, PostgreSQL,
+TensorFlow, PyTorch, Scikit-learn, Pandas, NumPy, Matplotlib,
+AWS, Docker, Git, REST API, Agile, Jupyter Notebook

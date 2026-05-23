@@ -1,0 +1,77 @@
+{
+  "timestamp": "2026-05-23T11:27:41.002617",
+  "job": {
+    "title": "Senior Data Scientist",
+    "department": "Analytics & AI",
+    "required_skills": [
+      "Python",
+      "Machine Learning",
+      "SQL",
+      "Pandas",
+      "Scikit-learn"
+    ],
+    "preferred_skills": [
+      "TensorFlow",
+      "PyTorch",
+      "AWS",
+      "Docker",
+      "NLP"
+    ],
+    "min_experience_years": 3,
+    "max_experience_years": 8,
+    "required_education": "Bachelors"
+  },
+  "candidate": {
+    "name": "Rudra Sharma",
+    "email": "rudra.sharma@email.com",
+    "phone": "+91-98765-43210",
+    "skills": [
+      "Python",
+      "SQL",
+      "Excel",
+      "Tableau",
+      "Pandas",
+      "Power BI"
+    ],
+    "experience_years": 6.0,
+    "education": "Masters",
+    "raw_length": 45
+  },
+  "match": {
+    "total": 63.5,
+    "breakdown": {
+      "skills": {
+        "score": 24.0,
+        "max": 50,
+        "required_matched": [
+          "pandas",
+          "python",
+          "sql"
+        ],
+        "preferred_matched": [],
+        "missing_required": [
+          "machine learning",
+          "scikit-learn"
+        ]
+      },
+      "experience": {
+        "score": 22.5,
+        "max": 30,
+        "candidate_years": 6.0,
+        "required_range": "3–8 years"
+      },
+      "education": {
+        "score": 10,
+        "max": 10,
+        "candidate": "Masters",
+        "required": "Bachelors",
+        "meets": true
+      },
+      "quality": {
+        "score": 7,
+        "max": 10
+      }
+    }
+  },
+  "report": "════════════════════════════════════════════════════════════\n         INTELLIGENT RESUME ANALYZER — REPORT\n════════════════════════════════════════════════════════════\n  Generated   : 23 May 2026, 11:27 AM\n  Job Title   : Senior Data Scientist\n  Department  : Analytics & AI\n════════════════════════════════════════════════════════════\n\n  CANDIDATE PROFILE\n  ────────────────────────────────────────\n  Name        : Rudra Sharma\n  Email       : rudra.sharma@email.com\n  Phone       : +91-98765-43210\n  Education   : Masters\n  Experience  : 6.0 years\n  Skills (6): Python, SQL, Excel, Tableau, Pandas, Power BI\n\n  MATCH SCORE BREAKDOWN\n  ────────────────────────────────────────\n  Skills      :  24.0 / 50\n  Experience  :  22.5 / 30\n  Education   :  10.0 / 10\n  Quality     :   7.0 / 10\n  ────────────────────\n  TOTAL SCORE :  63.5 / 100\n\n  RECOMMENDATION\n  ────────────────────────────────────────\n  🟠 MAYBE — Partial match. Consider if pipeline is thin.\n\n  SKILL GAPS (Required but missing)\n  ────────────────────────────────────────\n  ✗ machine learning\n  ✗ scikit-learn\n\n  MATCHED SKILLS\n  ────────────────────────────────────────\n  ✓ pandas (required)\n  ✓ python (required)\n  ✓ sql (required)\n\n════════════════════════════════════════════════════════════"
+}
